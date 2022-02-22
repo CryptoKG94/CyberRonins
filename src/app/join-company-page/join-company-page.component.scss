@@ -1,0 +1,72 @@
+.join-company-wrapper{
+    background-image: url('../../assets/Images/footer-bg.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    color: #fff;
+    
+    .join-company-heading{
+        text-transform: uppercase;
+        position: relative;
+        font-family: 'Aquire' !important;
+        margin: 0 0 15px 0;
+        padding: 150px 0 20px 0;
+        h1{
+            padding-left: 80px;
+            font-size: 50px;
+            font-weight: 900;
+        }
+    }
+    
+    .join-company-heading::after {
+        content: "";
+        display: block;
+        width: 30%;
+        height: 9px;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        right: 0px;
+        bottom: 0;
+        background-color: #3de0e6;
+    }
+
+    .join-button{
+        text-align: end;
+        button{
+            text-transform: uppercase;
+            border: 1px solid #fff;
+            border-radius: 45px;
+            background: transparent;
+            color: #3de0e6;
+            padding: 15px 50px;
+            font-weight: 700;
+            font-size: 20px;
+            font-family: 'Aquire' !important;
+        }
+    }
+
+    .join-company-detail p{
+        padding: 27px 0;
+        font-size: 21px;
+        text-align: end;
+        line-height: 40px;
+    }
+}
+.footer {
+    background-color: hsl(240deg 67% 2%);
+    color: #fff;
+    padding: 45px 0px;
+
+    .footer-social-icon{
+        display: flex;
+
+        a{
+            padding: 0 1rem;
+        }
+    }
+
+    .copyright-detail p{
+        text-align: center;
+        padding: 16px 0 0 0;
+    }
+}

@@ -1,0 +1,24 @@
+.landing-bg{
+    background-image: url("../../assets/Images/Home-slide.png");
+    background-size: cover;
+    height: 1170px;
+    .custom-header{
+        color: #fff;
+        padding-top: 60px;
+        position: relative;
+    }
+    div#navbarSupportedContent{
+        position: absolute;
+        right: 0;
+    }
+    .navbar-light .navbar-nav .nav-link{
+        color: #fff !important;
+        font-weight: 700;
+        padding: 0px 14px;
+    }            
+    .social-icon {
+        position: absolute;
+        right: 200px;
+        top: 50%;
+    }
+}

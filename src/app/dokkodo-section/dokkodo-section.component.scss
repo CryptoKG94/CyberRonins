@@ -1,0 +1,87 @@
+.dokkodo-wrapper{
+    background-image: url('../../assets/Images/BG.jpg');
+    height: auto;
+    position: relative;
+    color: #fff;
+    padding: 150px 0;
+    overflow-x: hidden;
+
+    .dokkodo-listing{
+        text-transform: uppercase;
+        position: relative;
+        font-family: 'Aquire' !important;
+        margin: 0 0 150px 0;
+
+        h3{
+            font-size: 40px;
+            font-weight: 700; 
+        }
+        h1{
+            font-size: 55px;
+            font-weight: 900;
+        }
+    }
+
+    .dokkodo-listing::after {
+        content: "";
+        display: block;
+        width: 28%;
+        height: 9px;
+        padding: 0;
+        margin: 0;
+        background-color: #3de0e6;
+    }
+
+    .listing-box{
+        text-transform: uppercase;
+        font-family: 'Aquire' !important;
+        background-color: hsl(234deg 72% 11%);
+        padding: 40px 50px;
+        margin: 0 92px 38px 0;
+        position: relative;
+
+        .listing-img{
+            position: absolute;
+            left: -23px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        h1{
+            color: hsl(182deg 77% 57%);
+            font-weight: 700;
+            font-size: 40px;
+        }
+    }
+    .listing-box:first-child::after {
+        content: "";
+        position: absolute;
+        top: -14%;
+        left: 0%;
+        height: 89px;
+        padding: 0;
+        margin: 0;
+        border-left: 5px solid #3de0e6;
+    }
+    .listing-box::after {
+        content: "";
+        position: absolute;
+        top: -58%;
+        left: 0%;
+        height: 308px;
+        padding: 0;
+        margin: 0;
+        border-left: 5px solid #fff;
+    }
+
+    .dokkodo-grid{
+        position: relative;
+    }
+
+    .dokkodo-logo{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+}
