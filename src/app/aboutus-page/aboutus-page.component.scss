@@ -40,3 +40,18 @@
         width: 95%;
     }
 }
+
+@media (max-width: 991px) and (min-width: 768px) { 
+    .aboutus-wrapper{
+        .about-us-heading{
+            h1{
+                font-size: 44px;
+            }
+        }
+        .about-us-content-p{
+            padding: 27px 0;
+            font-size: 18px;
+            line-height: 35px;
+        }
+    }
+}

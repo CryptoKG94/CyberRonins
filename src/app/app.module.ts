@@ -11,7 +11,8 @@ import { DokkodoSectionComponent } from './dokkodo-section/dokkodo-section.compo
 import { AboutusPageComponent } from './aboutus-page/aboutus-page.component';
 import { PartnersPageComponent } from './partners-page/partners-page.component';
 import { JoinCompanyPageComponent } from './join-company-page/join-company-page.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,9 @@ import { JoinCompanyPageComponent } from './join-company-page/join-company-page.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

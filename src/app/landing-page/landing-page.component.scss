@@ -2,6 +2,7 @@
     background-image: url("../../assets/Images/Home-slide.png");
     background-size: cover;
     height: 1170px;
+    overflow: hidden;
     .custom-header{
         color: #fff;
         padding-top: 60px;
@@ -11,7 +12,7 @@
         position: absolute;
         right: 0;
     }
-    .navbar-light .navbar-nav .nav-link{
+    .navbar-nav .nav-link{
         color: #fff !important;
         font-weight: 700;
         padding: 0px 14px;
@@ -21,4 +22,82 @@
         right: 200px;
         top: 50%;
     }
+    .fixed-top {
+        position: unset !important;
+    }
+}
+@media (max-width: 1440px) and (min-width: 1025px) { 
+    .landing-bg{
+        height: 951px;
+
+        div#navbarSupportedContent{
+            right: 79px;
+        }
+
+        .social-icon {
+            right: 15px;
+            top: 72%;
+        }
+    } 
+}
+@media (max-width: 1024px) and (min-width: 768px) { 
+    .landing-bg{
+        height: 650px;
+        .social-icon {
+            right: 10px;
+            top: 45%;
+        }
+    } 
+    .navbar-brand{
+        img{
+            width: 100%
+        }
+    }
+}
+@media only screen and (max-width: 768px) {
+    .navbar-brand{
+        img{
+            width: calc(10px + 100px) !important;
+        }
+    }
+    .landing-bg{
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .social-icon {
+        right: 25px !important;
+        top: 30% !important;
+    }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
+* {
+  font-family: "Titillium Web", sans-serif;
+}
+body {
+  height: 2000px;
+}
+nav.navbar.navbar-expand-sm.navbar-dark.fixed-top{
+    padding: 30px;
+    
+}
+ul.navbar-nav.ml-auto {
+    margin-left: auto;
+}
+.navbar .navbar-brand {
+  font-size: 30px;
+}
+.navbar .nav-item {
+  padding: 10px 20px;
+}
+.navbar .nav-link {
+  font-size: 20px;
+  margin-left: 10px;
+}
+.fa-bars {
+  color: #007bff;
+  font-size: 30px;
 }

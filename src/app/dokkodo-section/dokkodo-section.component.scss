@@ -5,6 +5,7 @@
     color: #fff;
     padding: 150px 0;
     overflow-x: hidden;
+    background-size: cover;
 
     .dokkodo-listing{
         text-transform: uppercase;
@@ -51,6 +52,16 @@
             color: hsl(182deg 77% 57%);
             font-weight: 700;
             font-size: 40px;
+        }
+
+        h2{
+            font-size: 115px;
+            text-align: end;
+            position: absolute;
+            right: 0;
+            bottom: -37px;
+            font-weight: 700;
+            color: hsl(234deg 59% 14%);
         }
     }
     .listing-box:first-child::after {
