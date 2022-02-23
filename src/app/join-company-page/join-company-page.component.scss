@@ -72,16 +72,13 @@
     }
 }
 
-@media (max-width: 2560px) and (min-width: 1441px) { 
-    .join-company-wrapper{
-        height: 132vh;
-    } 
-}
-
 @media (max-width: 1440px) and (min-width: 1025px) { 
     .join-company-wrapper{
-        height: 132vh;
-
+        background-position: center;
+        height: auto !important;
+        .join-company-content{
+            padding-bottom: 80px;
+        }
         .join-company-heading{
             h1{
                 font-size: 40px;
@@ -96,8 +93,6 @@
 
 @media (max-width: 1024px) and (min-width: 768px) {
     .join-company-wrapper{
-        height: 132vh;
-
         .join-company-heading{
             h1{
                 font-size: 30px;
@@ -130,6 +125,7 @@
         }
         
     } 
+   
 }
 
 @media only screen and (max-width: 768px) {
@@ -147,9 +143,11 @@
     .join-button button {
         padding: 12px 30px;
         font-size: 17px !important;
+        margin-bottom: 20px !important;
     }
     .join-company-wrapper {
         background-position: center;
+        height: auto !important;
     }
     .footer {
         padding: 20px 0px 20px 0px !important;
@@ -162,5 +160,8 @@
     .footer .copyright-detaill {
         margin-top: 10px !important;
         margin-bottom: 0px !important;
+    }
+    .join-company-heading {
+        padding: 50px 0px !important;
     }
 }

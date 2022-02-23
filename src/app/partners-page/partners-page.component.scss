@@ -39,6 +39,17 @@
        
     }
 }
+
+@media (max-width: 1024px) and (min-width: 992px) { 
+    .partner-img {
+        text-align: center;
+    }
+    .partner-img img{
+        max-width: 244px;
+        max-height: 120px;
+        text-align: center;
+    }
+}
 @media only screen and (max-width: 768px) {
     .partner-img {
         text-align: center;
@@ -54,7 +65,13 @@
         max-height: 122px;
     }
     .partners-heading h1{
-        
+        font-size: 40px !important;
+    }
+    .aboutus-wrapper {
+        padding: 50px !important;
+    }
+    .partners-wrapper{
+        padding: 50px 0px !important;
     }
 
 }
@@ -64,5 +81,6 @@
         padding: 5px 10px;
         margin-left: 35px !important;
     }
+
     
 }
