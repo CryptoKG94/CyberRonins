@@ -6,6 +6,20 @@
         border: 1px solid hsl(224deg 15% 29%);
         border-radius: 15px;
     }
+    // .glitch-grid{
+    //     position: relative;
+    // }
+    // .glitch-div2::after{
+    //     content: "";
+    //     display: block;
+    //     width: 305px;
+    //     height: 350px;
+    //     position: absolute;
+    //     left: -10px;
+    //     top: -89px;
+    //     border-radius: 15px;
+    //     border:1px solid #3de0e6;
+    // }
     .glitch-grid > div:not(:last-child){
         margin: 0px 94px 0 0;
     }
