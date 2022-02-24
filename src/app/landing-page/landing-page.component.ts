@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as fromRoot from '../core/store';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  ethereumInjected$: Observable<boolean>;
+  ethereumConnected$: Observable<boolean>;
+  account$: Observable<string>;
+
+  constructor(private store$: Store<fromRoot.AppState>) { }
 
   ngOnInit(): void {
+    this.ethereumInjected$ = this.store$.pipe(select(fromRoot.getEthereumInjected));
+    this.ethereumConnected$ = this.store$.pipe(select(fromRoot.getEthereumConnected));
+    this.account$ = this.store$.pipe(select(fromRoot.getAccount));
   }
+  onConnect = () => this.store$.dispatch(fromRoot.Web3GatewayActions.ethereumConnect());
+  onDisconnect = () => this.store$.dispatch(fromRoot.Web3GatewayActions.ethereumDisconnect());
 
 }

@@ -33,8 +33,11 @@
               <li class="nav-item">
                 <a href="#section5" class="nav-link"> PATNERS </a>
               </li>
-              <li class="nav-item">
-                <button class="btn wallet-connect">Connect Wallet</button>
+              <li class="nav-item" *ngIf="{connected: ethereumConnected$ | async, injected: ethereumInjected$ | async} as ethereum">
+                <button class="btn wallet-connect" *ngIf="!ethereum.connected && ethereum.injected"  (click)="onConnect()"
+                >Connect Wallet</button>
+                <button class="btn wallet-connect" *ngIf="ethereum.connected && ethereum.injected"  (click)="onDisconnect()"
+                >{{account$|async}}</button>
               </li>
             </ul>
           </div>

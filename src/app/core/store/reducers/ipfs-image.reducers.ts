@@ -1,6 +1,6 @@
 
 import { createReducer, on } from '@ngrx/store';
-import * as IpfsUploadActions from '../actions/ipfs-product-image.actions';
+import * as IpfsUploadActions from '../actions/ipfs-image.actions';
 
 export enum FileUploadStatus {
   Pending = 'Pending',
@@ -30,4 +30,4 @@ export const reducer = createReducer(
 
 );
 
-export const getImageBlob =  (state: State,ipfsHash:string) => state.images[ipfsHash];
+export const getImages =  (state: State) => state.images;

@@ -14,6 +14,8 @@ import {
   import * as fromError from './error.reducer';
   import * as fromWeb3Gateway from './web3-gateway.reducer';
   import * as fromIpfsDaemon from './ipfs-daemon.reducer';
+  import * as fromIpfs from './ipfs-image.reducers';
+  import * as fromNftMinting from './nft-minting.reducers';
   
 
   export interface AppState {
@@ -21,8 +23,12 @@ import {
     error: fromError.ErrorState;
     web3Provider: fromWeb3Gateway.Web3GatewayState;
     ipfsDaemon: fromIpfsDaemon.IpfsDaemonState;
+    ipfs: fromIpfs.State;
+    nftMinting:fromNftMinting.State;
   
   }
+  
+ 
 
   export const ROOT_REDUCERS =
     new InjectionToken<ActionReducerMap<AppState, Action>>('Root reducers token', {
@@ -30,7 +36,9 @@ import {
       router: fromRouter.routerReducer,
       error: fromError.reducer,
       web3Provider: fromWeb3Gateway.reducer,
-      ipfsDaemon: fromIpfsDaemon.reducer
+      ipfsDaemon: fromIpfsDaemon.reducer,
+      ipfs:fromIpfs.reducer,
+      nftMinting:fromNftMinting.reducer
   
     }),
   });
@@ -109,4 +117,21 @@ import {
     selectIpfsDaemonState,
     fromIpfsDaemon.getIpfsConnectStatus
   );
+
+  export const selectIpfsState = createFeatureSelector<AppState, fromIpfs.State>(
+    'ipfs'
+  );
+  
+  export const selectNftMintingState = createFeatureSelector<AppState, fromNftMinting.State>(
+    'nftMinting'
+  );
+  export const getImages = createSelector(selectIpfsState, fromIpfs.getImages);
+  export const getTotalSupply = createSelector(selectNftMintingState, fromNftMinting.getTotalSupply);
+
+  export const getNft1TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft1TotalSupply);
+  export const getNft2TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft2TotalSupply);
+  export const getNft3TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft3TotalSupply);
+  export const getNft4TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft4TotalSupply);
+  export const getNft5TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft5TotalSupply);
+  
   
