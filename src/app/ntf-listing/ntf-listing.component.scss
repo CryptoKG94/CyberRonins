@@ -2,13 +2,14 @@
     background-color: hsl(234deg 72% 11%);
     color: #fff;
     padding: 150px 0;
-    
-    .ntf-content > div {
+    overflow-x: hidden;
+    .ntf-content {
         background-color: hsl(235deg 46% 15%);
         padding: 20px;
         border-radius: 15px;
         text-align: center;
         box-shadow: 0px 25px 0px 0px #060a28;
+        margin: 0 20px;
 
         .ntf-heading{
             text-transform: uppercase;
@@ -41,7 +42,15 @@
             font-family: 'Aquire' !important;
         }
     }
-    .ntf-content > div:not(:last-child){
-        margin: 0px 40px 0 0;
+}
+.ntf-listing {
+    .ng-tns-c19-0 > .owl-stage.ng-tns-c19-0{
+        display: flex !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .ntf-listing {
+        padding: 50px 0px !important;
     }
 }

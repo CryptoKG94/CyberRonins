@@ -1,12 +1,12 @@
 <div class="dokkodo-wrapper">
   <div class="container">
     <div class="row dokkodo-grid">
-        <div class="col-7">
+        <div class="col-md-7 col-sm-12 image-mange">
             <div class="dokkodo-listing">
               <h3>The way of the ronins</h3>
               <h1>Dokkodo</h1>
             </div>
-            <div class="dokkodo-content">
+            <div class="dokkodo-content dokkodo-continer" *ngFor='let in of counter(1) ;let i = index'>
               <div class="listing-box">
                 <div class="listing-img">
                   <img src="../../assets/Images/blue-box.svg" alt="">
@@ -14,6 +14,7 @@
                 <div class="listing-content">
                   <h1>TBA</h1>
                   <p>???</p>
+                  <h2>{{i+1}}</h2>
                 </div>
               </div>
               <div class="listing-box">
@@ -23,6 +24,7 @@
                 <div class="listing-content">
                   <h1>TBA</h1>
                   <p>???</p>
+                  <h2>{{i+2}}</h2>
                 </div>
               </div>
               <div class="listing-box">
@@ -32,6 +34,7 @@
                 <div class="listing-content">
                   <h1>TBA</h1>
                   <p>???</p>
+                  <h2>{{i+3}}</h2>
                 </div>
               </div>
               <div class="listing-box">
@@ -41,6 +44,7 @@
                 <div class="listing-content">
                   <h1>TBA</h1>
                   <p>???</p>
+                  <h2>{{i+4}}</h2>
                 </div>
               </div>
               <div class="listing-box">
@@ -50,6 +54,7 @@
                 <div class="listing-content">
                   <h1>TBA</h1>
                   <p>???</p>
+                  <h2>{{i+5}}</h2>
                 </div>
               </div>
               <div class="listing-box">
@@ -59,6 +64,7 @@
                 <div class="listing-content">
                   <h1>TBA</h1>
                   <p>???</p>
+                  <h2>{{i+6}}</h2>
                 </div>
               </div>
               <div class="listing-box">
@@ -68,6 +74,7 @@
                 <div class="listing-content">
                   <h1>TBA</h1>
                   <p>???</p>
+                  <h2>{{i+7}}</h2>
                 </div>
               </div>
               <div class="listing-box">
@@ -77,6 +84,7 @@
                 <div class="listing-content">
                   <h1>TBA</h1>
                   <p>???</p>
+                  <h2>{{i+8}}</h2>
                 </div>
               </div>
               <div class="listing-box">
@@ -86,6 +94,7 @@
                 <div class="listing-content">
                   <h1>TBA</h1>
                   <p>???</p>
+                  <h2>{{i+9}}</h2>
                 </div>
               </div>
               <div class="listing-box">
@@ -95,11 +104,12 @@
                 <div class="listing-content">
                   <h1>TBA</h1>
                   <p>???</p>
+                  <h2>{{i+10}}</h2>
                 </div>
               </div>
             </div>
         </div>
-        <div class="col-5 dokkodo-logo">
+        <div class="col-md-5 col-sm-7 dokkodo-logo">
             <img src="../../assets/Images/Logo.svg"/>
         </div>
     </div>

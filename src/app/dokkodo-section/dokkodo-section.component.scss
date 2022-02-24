@@ -5,6 +5,7 @@
     color: #fff;
     padding: 150px 0;
     overflow-x: hidden;
+    background-size: cover;
 
     .dokkodo-listing{
         text-transform: uppercase;
@@ -52,6 +53,16 @@
             font-weight: 700;
             font-size: 40px;
         }
+
+        h2{
+            font-size: 115px;
+            text-align: end;
+            position: absolute;
+            right: 0;
+            bottom: -37px;
+            font-weight: 700;
+            color: hsl(234deg 59% 14%);
+        }
     }
     .listing-box:first-child::after {
         content: "";
@@ -83,5 +94,23 @@
         top: 50%;
         right: 0;
         transform: translateY(-50%);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dokkodo-continer {
+        padding-left: 25px;
+    }
+    .dokkodo-listing h3{
+        font-size: 28px;
+    }
+    .dokkodo-listing h1{
+        font-size: 40px;
+    }
+    .image-mange {
+        z-index: 1;
+    }
+    .dokkodo-wrapper {
+        padding: 50px 0px !important;
     }
 }

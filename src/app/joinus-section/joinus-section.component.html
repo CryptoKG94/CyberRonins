@@ -10,7 +10,24 @@
               <p>Get involved in one of the most revolutionary NFT projects that are going to promote blockchain adaptation in Asia!</p>
               <span>February 14, 2022 @ 12:00 AM UTC</span>
           </div>
-          <div class="count-clock" id="count-clock"></div>
+          <div class="timer" id="timer">
+            <div class="countdown">
+              <h1 id="days"> {{daysToDday}} </h1>
+              <p>Days</p>
+            </div>
+            <div class="countdown">
+              <h1 id="hours"> {{hoursToDday}} </h1>
+              <p>Hours</p>
+            </div>
+            <div class="countdown">
+              <h1 id="minutes"> {{minutesToDday}} </h1>
+              <p>Minutes</p>
+            </div>
+            <div class="countdown">
+              <h1 id="seconds"> {{secondsToDday}} </h1>
+              <p>Seconds</p>
+            </div>
+          </div>
           <div class="learn-more-button">
             <button>Learn more</button>
           </div>
@@ -19,25 +36,3 @@
     </div>
   </div>
 </div>
-<script>
-    var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-    var x = setInterval(function() {
-    
-    var now = new Date().getTime();
-
-    var distance = countDownDate - now;
-        
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    document.getElementById("count-clock").innerHTML = days + "DAYS" + hours + "HOURS"
-      + minutes + "MINUTES" + seconds + "SECONDS";
-     
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("count-clock").innerHTML = "EXPIRED";
-      }
-    }, 1000);
-</script>

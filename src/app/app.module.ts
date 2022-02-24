@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AppErrorHandler } from './core/services/app-error-handler.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -24,6 +23,8 @@ import { ROOT_REDUCERS,metaReducers } from './core/store';
 import { EffectsModule } from '@ngrx/effects';
 import * as fromRootStore from './core/store';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,12 +55,14 @@ import * as fromRootStore from './core/store';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot(fromRootStore.effects),
+    CarouselModule
   ],
   entryComponents: [
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
+    
   ],
   bootstrap: [AppComponent]
 })

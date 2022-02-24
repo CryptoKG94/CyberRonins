@@ -30,6 +30,31 @@
             font-weight: 700;
         }
     }
+    .joinus-content{
+        .timer{
+            display: flex;
+            .countdown{
+                padding: 20px 30px 20px 30px;
+            }
+            .countdown:first-child{
+                padding: 20px 32px 20px 0;
+            }
+            .countdown:last-child{
+                padding: 20px 0px 20px 32px;
+            }
+            h1{
+                font-size: 100px;
+                color: hsl(349deg 92% 47%);
+                font-weight: 700;
+                font-family: 'Aquire';
+            }
+
+            p{
+                text-transform: uppercase;
+                text-align: center;
+            }
+        }
+    }
     .joinus-block{
         background-color: hsl(224deg 15% 29%);
         height: 500px;
@@ -50,4 +75,98 @@
             font-family: 'Aquire' !important;
         }
     }
+}
+
+@media (max-width: 1440px) and (min-width: 1025px) { 
+    .joinus-wrapper{
+        .joinus-heading{
+            :nth-last-child(1){
+                font-size: 40px;
+            }
+        }
+
+        .joinus-block{
+            max-width: 420px;
+        }
+
+        .joinus-content{
+            .timer{
+                h1{
+                    font-size: 75px;
+                }
+            }
+        }
+    } 
+}
+
+@media (max-width: 1024px) and (min-width: 992px) { 
+    .joinus-wrapper{
+        .joinus-heading{
+            :nth-last-child(1){
+                font-size: 35px;
+            }
+        }
+
+        .joinus-block{
+            max-width: 420px;
+        }
+
+        .joinus-content{
+            .timer{
+                h1{
+                    font-size: 75px;
+                }
+            }
+        }
+    } 
+}
+
+@media (max-width: 991px) and (min-width: 768px) { 
+    .joinus-wrapper{
+        .joinus-heading{
+            :nth-last-child(1){
+                font-size: 30px;
+            }
+        }
+
+        .joinus-block{
+            max-width: 420px;
+        }
+
+        .joinus-content{
+            .timer{
+                h1{
+                    font-size: 50px;
+                }
+            }
+        }
+    } 
+}
+
+@media only screen and (max-width: 768px) {
+    .joinus-content{
+        .timer{
+            h1{
+                font-size: 30px !important;
+            }
+        }
+    }
+    .learn-more-button{
+        text-align: center;
+        margin-bottom: 15px;
+
+        button {
+            padding: 12px 55px;
+        }
+    }
+    .joinus-block{
+        margin: 0 10px;
+    }
+    .joinus-wrapper {
+        padding: 50px 0px !important;
+    }
+    .joinus-wrapper h1 {
+        font-size: 33px !important;
+    }
+    
 }

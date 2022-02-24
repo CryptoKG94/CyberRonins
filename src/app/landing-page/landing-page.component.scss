@@ -2,6 +2,7 @@
     background-image: url("../../assets/Images/Home-slide.png");
     background-size: cover;
     height: 1170px;
+    overflow: hidden;
     .custom-header{
         color: #fff;
         padding-top: 60px;
@@ -11,14 +12,193 @@
         position: absolute;
         right: 0;
     }
-    .navbar-light .navbar-nav .nav-link{
+    .navbar-nav .nav-link{
         color: #fff !important;
         font-weight: 700;
         padding: 0px 14px;
-    }            
+    } 
+    .navbar-nav .nav-link:hover{
+        color: #1de0e7 !important;
+    }           
     .social-icon {
         position: absolute;
         right: 200px;
         top: 50%;
+    }
+    .fixed-top {
+        position: unset !important;
+    }
+    .navbar-nav .nav-item:nth-last-child(1){
+        padding: 10px 0;
+    }
+    .navbar-nav{
+        align-items: center;
+    }
+    .wallet-connect{
+        text-transform: uppercase;
+        border: 1px solid #fff;
+        border-radius: 45px;
+        background: transparent;
+        color: #3de0e6;
+        font-weight: 700;
+        font-family: 'Aquire' !important;
+        padding: 6px 30px;
+        font-size: 18px;
+    }
+    .wallet-connect:hover{
+        color: #fff;
+        border: 1px solid #3de0e6;
+    }
+}
+@media (max-width: 1440px) and (min-width: 1025px) { 
+    .landing-bg{
+        height: 951px;
+
+        div#navbarSupportedContent{
+            right: 79px;
+        }
+
+        .social-icon {
+            right: 15px;
+            top: 40%;
+        }
+    } 
+}
+@media (max-width: 1024px) and (min-width: 993px) { 
+    .landing-bg{
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        .social-icon {
+            right: 10px;
+            top: 26%;
+        }
+    } 
+    .navbar-brand{
+        img{
+            width: calc(10px + 100px) !important;
+        }
+    }
+    .navbar-nav{
+        align-items: start !important;
+        position: absolute;
+        top: 31%;
+        right: 7%;
+    }
+    .navbar-nav .nav-item:nth-last-child(1){
+        padding: 10px 20px !important;
+    }
+    .nav-content{
+        position: relative;
+    }
+    .navbar-toggler{
+        position: absolute;
+        right: 5%;
+        top: 0%;
+    }
+}
+@media (max-width: 992px) and (min-width: 768px) { 
+    .navbar-brand{
+        img{
+            width: calc(10px + 100px) !important;
+        }
+    }
+    .landing-bg{
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    
+        .social-icon {
+            right: 10px;
+            top: 26%;
+        }
+    } 
+    .navbar-nav{
+        align-items: start !important;
+        position: absolute;
+        top: 31%;
+        right: 7%;
+    }
+    .navbar-nav .nav-item:nth-last-child(1){
+        padding: 10px 20px !important;
+    }
+    .nav-content{
+        position: relative;
+    }
+    .navbar-toggler{
+        position: absolute;
+        right: 5%;
+        top: 0%;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .navbar-brand{
+        img{
+            width: calc(10px + 100px) !important;
+        }
+    }
+    .landing-bg{
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .social-icon {
+        right: 25px !important;
+        top: 30% !important;
+    }
+    .navbar-nav{
+        align-items: start !important;
+    }
+    .navbar-nav .nav-item:nth-last-child(1){
+        padding: 10px 20px !important;
+    }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
+* {
+  font-family: "Titillium Web", sans-serif;
+}
+body {
+  height: 2000px;
+}
+nav.navbar.navbar-expand-sm.navbar-dark.fixed-top{
+    padding: 30px 0;
+}
+ul.navbar-nav.ml-auto {
+    margin-left: auto;
+}
+.navbar .navbar-brand {
+  font-size: 30px;
+}
+.navbar .nav-item {
+  padding: 10px 20px;
+}
+.navbar .nav-link {
+  font-size: 20px;
+  margin-left: 10px;
+}
+.fa-bars {
+  color: #007bff;
+  font-size: 30px;
+}
+
+@media (max-width:1024px){
+    .navbar-expand-sm .navbar-toggler {
+        display: block !important;
+    }
+    .collapse:not(.show) {
+        display: none !important;
+    }
+    .navbar-collapse {
+        flex-basis: 100% !important;
+    }
+    .navbar-nav {
+        flex-direction: column !important;
     }
 }

@@ -30,3 +30,57 @@
         margin: 100px 40px;
     }
 }
+
+@media (max-width: 991px) and (min-width: 768px) { 
+    .partners-wrapper{
+        .partners-content{
+            margin: 80px 10px;
+        }
+       
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 992px) { 
+    .partner-img {
+        text-align: center;
+    }
+    .partner-img img{
+        max-width: 244px;
+        max-height: 120px;
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .partner-img {
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .partner-img{
+        text-align: center !important;
+    }
+    .partner-img img {
+        width: calc(100% - -50px);
+        max-width: 222px;
+        max-height: 104px;
+    }
+    .partners-heading h1{
+        font-size: 40px !important;
+    }
+    .aboutus-wrapper {
+        padding: 50px !important;
+    }
+    .partners-wrapper{
+        padding: 50px 0px !important;
+    }
+
+}
+@media only screen and (max-width: 425px) {
+    .partner-img[_ngcontent-lcb-c26] img[_ngcontent-lcb-c26] {
+        width: 70%;
+        padding: 5px 10px;
+        margin-left: 35px !important;
+    }
+
+    
+}

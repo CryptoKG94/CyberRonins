@@ -2,6 +2,7 @@
     background-image: url('../../assets/Images/footer-bg.jpg');
     height: 100vh;
     background-repeat: no-repeat;
+    background-size: cover;
     color: #fff;
     
     .join-company-heading{
@@ -11,7 +12,7 @@
         margin: 0 0 15px 0;
         padding: 150px 0 20px 0;
         h1{
-            padding-left: 80px;
+            text-align: end;
             font-size: 50px;
             font-weight: 900;
         }
@@ -68,5 +69,99 @@
     .copyright-detail p{
         text-align: center;
         padding: 16px 0 0 0;
+    }
+}
+
+@media (max-width: 1440px) and (min-width: 1025px) { 
+    .join-company-wrapper{
+        background-position: center;
+        height: auto !important;
+        .join-company-content{
+            padding-bottom: 80px;
+        }
+        .join-company-heading{
+            h1{
+                font-size: 40px;
+            }
+        }
+        .join-company-detail p{
+            font-size: 18px;
+            line-height: 37px;
+        }
+    } 
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+    .join-company-wrapper{
+        .join-company-heading{
+            h1{
+                font-size: 30px;
+            }
+        }
+        .join-company-detail p{
+            font-size: 15px;
+            line-height: 35px;
+        }
+    } 
+}
+
+
+@media (max-width: 991px) and (min-width: 768px) { 
+    .join-company-wrapper{
+        height: 156vh;
+
+        .join-company-heading{
+            h1{
+                font-size: 30px;
+            }
+        }
+        .join-company-detail p{
+            font-size: 15px;
+            line-height: 25px;
+        }
+
+        .join-company-detail p{
+            padding: 7px 0;
+        }
+        
+    } 
+   
+}
+
+@media only screen and (max-width: 768px) {
+    .join-company-heading h1{
+        font-size: 34px !important;
+        margin-bottom: 0px;
+    }
+    .join-company-detail p{  
+        font-size: 15px !important;
+        line-height: 19px !important;
+    }
+    .join-button{
+        font-size: 15px !important;
+    }
+    .join-button button {
+        padding: 12px 30px;
+        font-size: 17px !important;
+        margin-bottom: 20px !important;
+    }
+    .join-company-wrapper {
+        background-position: center;
+        height: auto !important;
+    }
+    .footer {
+        padding: 20px 0px 20px 0px !important;
+        text-align: center;
+    }
+    .footer .footer-social-icon {
+        align-items: center;
+        justify-content: center;
+    }
+    .footer .copyright-detaill {
+        margin-top: 10px !important;
+        margin-bottom: 0px !important;
+    }
+    .join-company-heading {
+        padding: 50px 0px !important;
     }
 }
