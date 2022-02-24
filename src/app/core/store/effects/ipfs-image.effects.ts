@@ -6,14 +6,13 @@ import { exhaustMap, map, tap, switchMap, catchError } from 'rxjs/operators';
 import { of, empty } from 'rxjs';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 
-import { IpfsDaemonService } from '../../../core/services/ipfs-daemon.service';
-import { IpfsImageActions } from '../actions';
-import { ErrorActions } from '../../../core/store/actions';
+import { IpfsDaemonService } from '../../services/ipfs-daemon.service';
+import { ErrorActions,IpfsImageActions } from '../actions';
 
 
 
 @Injectable()
-export class IpfsUploadEffects {
+export class IpfsImageEffects {
   constructor(private ipfsSrv: IpfsDaemonService, private actions$: Actions,
     private httpClient: HttpClient
   ) { }

@@ -31,10 +31,13 @@
                 <a href="#" class="nav-link active"> ABOUT </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active"> PATNERS </a>
+                <a href="#" class="nav-link active"> PARTNERS </a>
               </li>
-              <li class="nav-item">
-                <button class="btn wallet-connect">Connect Wallet</button>
+              <li class="nav-item" *ngIf="{connected: ethereumConnected$ | async, injected: ethereumInjected$ | async} as ethereum">
+                <button class="btn wallet-connect" *ngIf="!ethereum.connected && ethereum.injected"  (click)="onConnect()"
+                >Connect Wallet</button>
+                <button class="btn wallet-connect" *ngIf="ethereum.connected && ethereum.injected"  (click)="onDisconnect()"
+                >{{account$|async}}</button>
               </li>
             </ul>
           </div>

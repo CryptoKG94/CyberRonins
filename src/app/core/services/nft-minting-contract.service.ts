@@ -44,7 +44,12 @@ export class NftMintingContractService {
     return from(this.contractToken['balanceOf'](account,id)).pipe(
       map(balance => balance as string)
     );
+  }
 
+  public getTokenSupply(id:string): Observable<string> {
+    return from(this.contractToken['totalSupply'](id)).pipe(
+      map(supply => supply as string)
+    );
   }
 
 }
