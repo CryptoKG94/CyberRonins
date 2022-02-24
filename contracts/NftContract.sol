@@ -11,25 +11,25 @@ contract NftContract is ERC1155Supply,Ownable {
 
   mapping(uint256 => uint256) private mintPrices;
   mapping(uint256 => uint256) private maxMints;
-  mapping(uint256 => uint256) private MAX_TOKENS;
+  mapping(uint256 => uint256) public MAX_TOKENS;
   
   mapping(uint256 => bool) private mintPaused;
   mapping(uint256 => bool) private mintingEndedForever;
   constructor() ERC1155("nftUri{id}") {
-        MAX_TOKENS[1] = 600;
-        MAX_TOKENS[2] = 300;
-        MAX_TOKENS[3] = 200;
-        MAX_TOKENS[4] = 100;
+        MAX_TOKENS[1] = 6;
+        MAX_TOKENS[2] = 3;
+        MAX_TOKENS[3] = 2;
+        MAX_TOKENS[4] = 1;
 
         maxMints[1] = 1;
         maxMints[2] = 1;
         maxMints[3] = 1;
         maxMints[4] = 1;
 
-        mintPrices[1] = 1.5 ether;
-        mintPrices[2] = 3 ether;
-        mintPrices[3] = 4.5 ether;
-        mintPrices[4] = 8 ether;
+        mintPrices[1] = 0.05 ether;
+        mintPrices[2] = 0.03 ether;
+        mintPrices[3] = 0.04 ether;
+        mintPrices[4] = 0.08 ether;
   }
 
   function mint(uint256 id,uint256 numberOfTokens) public payable {
@@ -41,6 +41,7 @@ contract NftContract is ERC1155Supply,Ownable {
         require(mintPrices[id].mul(numberOfTokens) <= msg.value, "Not enough Ether sent.");
 
         _mint(msg.sender, id,numberOfTokens,"");
+        payable(address(this)).transfer(msg.value);
     }
 
     function endSaleForever(uint256 id) external onlyOwner {

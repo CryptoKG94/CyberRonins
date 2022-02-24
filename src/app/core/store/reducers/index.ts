@@ -11,7 +11,6 @@ import {
   import * as fromRouter from '@ngrx/router-store';
   
   import { environment } from '../../../../environments/environment';
-  import * as fromSpinner from './spinner.reducer';
   import * as fromError from './error.reducer';
   import * as fromWeb3Gateway from './web3-gateway.reducer';
   import * as fromIpfsDaemon from './ipfs-daemon.reducer';
@@ -19,7 +18,6 @@ import {
 
   export interface AppState {
     router: fromRouter.RouterReducerState<any>;
-    spinner: fromSpinner.SpinnerState;
     error: fromError.ErrorState;
     web3Provider: fromWeb3Gateway.Web3GatewayState;
     ipfsDaemon: fromIpfsDaemon.IpfsDaemonState;
@@ -30,7 +28,6 @@ import {
     new InjectionToken<ActionReducerMap<AppState, Action>>('Root reducers token', {
     factory: () => ({
       router: fromRouter.routerReducer,
-      spinner: fromSpinner.reducer,
       error: fromError.reducer,
       web3Provider: fromWeb3Gateway.reducer,
       ipfsDaemon: fromIpfsDaemon.reducer
@@ -65,15 +62,6 @@ import {
     selectRouteData,      // select the current route data
     selectUrl,            // select the current url
   } = fromRouter.getSelectors(selectRouterState);
-  
-  
-  export const selectSpinnerState = createFeatureSelector<AppState, fromSpinner.SpinnerState>(
-    'spinner'
-  );
-  export const getSpinnerShow = createSelector(
-    selectSpinnerState,
-    fromSpinner.getSpinnerShow
-  );
   
   
   export const selectErrorState = createFeatureSelector<AppState, fromError.ErrorState>(

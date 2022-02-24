@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { tap, map } from 'rxjs/operators';
 
-import { ErrorActions, SnackBarActions } from '../actions';
+import { ErrorActions } from '../actions';
 import { AppearanceColor, SnackBarInterface } from '../../models';
 
 
@@ -14,7 +14,7 @@ export class ErrorEffects {
     constructor(private readonly actions$: Actions) {
     }
 
-    handleError$ = createEffect(
+    /*handleError$ = createEffect(
       () =>
         this.actions$.pipe(
           ofType(ErrorActions.errorMessage),
@@ -31,6 +31,6 @@ export class ErrorEffects {
           } )
         )
 
-    );
+    );*/
 
 }

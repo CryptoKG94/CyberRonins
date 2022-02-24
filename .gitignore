@@ -37,6 +37,7 @@ yarn-error.log
 testem.log
 /typings
 secret.json
+/contracts/build
 
 # System files
 .DS_Store

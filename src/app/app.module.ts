@@ -4,45 +4,58 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { SnackBarComponent } from './core/components/snackbar/snack-bar.component';
 import { AppErrorHandler } from './core/services/app-error-handler.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from './core/services/http-error.interceptor';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { GlitchListComponent } from './glitch-list/glitch-list.component';
+import { JoinusSectionComponent } from './joinus-section/joinus-section.component';
+import { NtfListingComponent } from './ntf-listing/ntf-listing.component';
+import { DokkodoSectionComponent } from './dokkodo-section/dokkodo-section.component';
+import { AboutusPageComponent } from './aboutus-page/aboutus-page.component';
+import { PartnersPageComponent } from './partners-page/partners-page.component';
+import { JoinCompanyPageComponent } from './join-company-page/join-company-page.component';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreModule } from '@ngrx/store';
+import { ROOT_REDUCERS,metaReducers } from './core/store';
+import { EffectsModule } from '@ngrx/effects';
+import * as fromRootStore from './core/store';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
-    DashboardComponent,
-    SnackBarComponent
+    LandingPageComponent,
+    GlitchListComponent,
+    JoinusSectionComponent,
+    NtfListingComponent,
+    DokkodoSectionComponent,
+    AboutusPageComponent,
+    PartnersPageComponent,
+    JoinCompanyPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule
+    HttpClientModule,
+    StoreModule.forRoot(ROOT_REDUCERS, {
+      metaReducers,
+    }),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router',
+      routerState: RouterState.Minimal,
+    }),
+    StoreDevtoolsModule.instrument({
+      name: 'Cyber Ronins',
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot(fromRootStore.effects),
   ],
   entryComponents: [
-    SnackBarComponent
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },

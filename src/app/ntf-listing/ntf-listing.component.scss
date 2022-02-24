@@ -1,0 +1,47 @@
+.ntf-listing{
+    background-color: hsl(234deg 72% 11%);
+    color: #fff;
+    padding: 150px 0;
+    
+    .ntf-content > div {
+        background-color: hsl(235deg 46% 15%);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0px 25px 0px 0px #060a28;
+
+        .ntf-heading{
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 45px;
+            font-family: 'Aquire' !important;
+        }
+        .ntf-box{
+            background-color: hsl(224deg 15% 29%);
+            height: 300px;
+            border: 1px solid hsl(224deg 15% 29%);
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        p{
+            font-size: 18px;
+            letter-spacing: 0.9px;
+            margin: 17px 0;
+        }
+        button{
+            text-transform: uppercase;
+            border: 1px solid #fff;
+            border-radius: 45px;
+            background: transparent;
+            color: #3de0e6;
+            padding: 10px 45px;
+            font-weight: 700;
+            font-size: 19px;
+            margin: 0px 0 17px 0;
+            font-family: 'Aquire' !important;
+        }
+    }
+    .ntf-content > div:not(:last-child){
+        margin: 0px 40px 0 0;
+    }
+}

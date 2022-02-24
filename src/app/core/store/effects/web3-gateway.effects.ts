@@ -11,7 +11,7 @@ import * as fromStore from '../reducers';
 
 import { EthereumProviderToken } from '../../services/tokens';
 import { EthersWeb3ProviderService } from '../../services/ethers-web3-provider.service';
-import { Web3GatewayActions, SpinnerActions, ErrorActions } from '../actions';
+import { Web3GatewayActions, ErrorActions } from '../actions';
 import { utils } from 'ethers';
 
 @Injectable()
@@ -51,7 +51,7 @@ export class Web3GatewayEffects {
             console.log(`Ethereum provider has been granted access to the following account:`, ethAccounts[0]);
             return Web3GatewayActions.ethereumConnectSuccess();
           }),
-          catchError((err: Error) => of(this.handleError(err), SpinnerActions.hide()) )
+          catchError((err: Error) => of(this.handleError(err)) )
         );
 
       })
@@ -80,19 +80,8 @@ export class Web3GatewayEffects {
     { dispatch: false }
   );
 
-  showSpinner$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(Web3GatewayActions.ethereumConnect),
-      map(() => SpinnerActions.show())
-    )
-  );
+  
 
-  hideSpinner$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(Web3GatewayActions.ethereumConnectSuccess),
-      map(() => SpinnerActions.hide())
-    )
-  );
 
   getAccountInfo$ = createEffect(() =>
     this.actions$.pipe(
