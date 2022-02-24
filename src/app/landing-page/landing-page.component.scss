@@ -28,6 +28,12 @@
     .fixed-top {
         position: unset !important;
     }
+    .navbar-nav .nav-item:nth-last-child(1){
+        padding: 10px 0;
+    }
+    .navbar-nav{
+        align-items: center;
+    }
     .wallet-connect{
         text-transform: uppercase;
         border: 1px solid #fff;
@@ -36,6 +42,12 @@
         color: #3de0e6;
         font-weight: 700;
         font-family: 'Aquire' !important;
+        padding: 6px 30px;
+        font-size: 18px;
+    }
+    .wallet-connect:hover{
+        color: #fff;
+        border: 1px solid #3de0e6;
     }
 }
 @media (max-width: 1440px) and (min-width: 1025px) { 
@@ -54,7 +66,11 @@
 }
 @media (max-width: 1024px) and (min-width: 993px) { 
     .landing-bg{
-        height: 650px;
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
         .social-icon {
             right: 10px;
             top: 26%;
@@ -62,8 +78,25 @@
     } 
     .navbar-brand{
         img{
-            width: 100%
+            width: calc(10px + 100px) !important;
         }
+    }
+    .navbar-nav{
+        align-items: start !important;
+        position: absolute;
+        top: 31%;
+        right: 7%;
+    }
+    .navbar-nav .nav-item:nth-last-child(1){
+        padding: 10px 20px !important;
+    }
+    .nav-content{
+        position: relative;
+    }
+    .navbar-toggler{
+        position: absolute;
+        right: 5%;
+        top: 0%;
     }
 }
 @media (max-width: 992px) and (min-width: 768px) { 
@@ -84,6 +117,23 @@
             top: 26%;
         }
     } 
+    .navbar-nav{
+        align-items: start !important;
+        position: absolute;
+        top: 31%;
+        right: 7%;
+    }
+    .navbar-nav .nav-item:nth-last-child(1){
+        padding: 10px 20px !important;
+    }
+    .nav-content{
+        position: relative;
+    }
+    .navbar-toggler{
+        position: absolute;
+        right: 5%;
+        top: 0%;
+    }
 }
 @media only screen and (max-width: 767px) {
     .navbar-brand{
@@ -101,6 +151,12 @@
     .social-icon {
         right: 25px !important;
         top: 30% !important;
+    }
+    .navbar-nav{
+        align-items: start !important;
+    }
+    .navbar-nav .nav-item:nth-last-child(1){
+        padding: 10px 20px !important;
     }
 }
 
@@ -132,7 +188,7 @@ ul.navbar-nav.ml-auto {
   font-size: 30px;
 }
 
-@media (max-width: 768px){
+@media (max-width:1024px){
     .navbar-expand-sm .navbar-toggler {
         display: block !important;
     }
