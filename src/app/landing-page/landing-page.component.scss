@@ -28,6 +28,15 @@
     .fixed-top {
         position: unset !important;
     }
+    .wallet-connect{
+        text-transform: uppercase;
+        border: 1px solid #fff;
+        border-radius: 45px;
+        background: transparent;
+        color: #3de0e6;
+        font-weight: 700;
+        font-family: 'Aquire' !important;
+    }
 }
 @media (max-width: 1440px) and (min-width: 1025px) { 
     .landing-bg{
@@ -39,16 +48,16 @@
 
         .social-icon {
             right: 15px;
-            top: 72%;
+            top: 40%;
         }
     } 
 }
-@media (max-width: 1024px) and (min-width: 768px) { 
+@media (max-width: 1024px) and (min-width: 993px) { 
     .landing-bg{
         height: 650px;
         .social-icon {
             right: 10px;
-            top: 45%;
+            top: 26%;
         }
     } 
     .navbar-brand{
@@ -57,7 +66,26 @@
         }
     }
 }
-@media only screen and (max-width: 768px) {
+@media (max-width: 992px) and (min-width: 768px) { 
+    .navbar-brand{
+        img{
+            width: calc(10px + 100px) !important;
+        }
+    }
+    .landing-bg{
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    
+        .social-icon {
+            right: 10px;
+            top: 26%;
+        }
+    } 
+}
+@media only screen and (max-width: 767px) {
     .navbar-brand{
         img{
             width: calc(10px + 100px) !important;
@@ -84,8 +112,7 @@ body {
   height: 2000px;
 }
 nav.navbar.navbar-expand-sm.navbar-dark.fixed-top{
-    padding: 30px;
-    
+    padding: 30px 0;
 }
 ul.navbar-nav.ml-auto {
     margin-left: auto;
@@ -103,4 +130,19 @@ ul.navbar-nav.ml-auto {
 .fa-bars {
   color: #007bff;
   font-size: 30px;
+}
+
+@media (max-width: 768px){
+    .navbar-expand-sm .navbar-toggler {
+        display: block !important;
+    }
+    .collapse:not(.show) {
+        display: none !important;
+    }
+    .navbar-collapse {
+        flex-basis: 100% !important;
+    }
+    .navbar-nav {
+        flex-direction: column !important;
+    }
 }
