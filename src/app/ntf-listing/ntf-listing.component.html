@@ -2,7 +2,24 @@
   <div class="container">
     <div class="row ntf-content">
       <div class="col">
-        <div class="ntf-box"></div>
+        <div class="ntf-box">
+          <img src="https://gateway.pinata.cloud/ipfs/QmW5PmUVFyvSTsHtuRRRcitsgEmmm49oFVf2Nv2QLe7v8F"/>
+        </div>
+        <div class="ntf-content-detail">
+          <div class="ntf-heading">
+            <h2>RONIN</h2>
+            <h2>NTF</h2>
+          </div>
+          <p>
+              Total Supply: {{(nft0$|async)?.supply}}
+            </p>
+            <button *ngIf="account&&account.length" (click)="mint('0','0.01')">MINT</button>
+        </div>
+      </div>
+      <div class="col">
+        <div class="ntf-box">
+          <img src="https://gateway.pinata.cloud/ipfs/QmZQ7FLkUfHSzq9ptzyJzqYko7PKzF78yinEJDPb47kY6T"/>
+        </div>
         <div class="ntf-content-detail">
           <div class="ntf-heading">
             <h2>RONIN</h2>
@@ -11,11 +28,13 @@
           <p>
               Total Supply: {{(nft1$|async)?.supply}}
             </p>
-            <button *ngIf="account&&account.length" (click)="mint('1','0.05')">MINT</button>
+            <button *ngIf="account&&account.length" (click)="mint('1','0.02')">MINT</button>
         </div>
       </div>
       <div class="col">
-        <div class="ntf-box"></div>
+        <div class="ntf-box">
+          <img src="https://gateway.pinata.cloud/ipfs/QmTpc8iGFsrkGAhzodNp7PDEE57B2xGiEebuVWo2zCH7yH"/>
+        </div>
         <div class="ntf-content-detail">
           <div class="ntf-heading">
             <h2>ARTISAN</h2>
@@ -28,7 +47,9 @@
         </div>
       </div>
       <div class="col">
-        <div class="ntf-box"></div>
+        <div class="ntf-box">
+          <img src="https://gateway.pinata.cloud/ipfs/Qma5z7vbcDwPctGeQTQFtyuK8v5YbTRGuQRmRdxUDnVMPY"/>
+        </div>
         <div class="ntf-content-detail">
           <div class="ntf-heading">
             <h2>MERCHANT</h2>
@@ -41,7 +62,9 @@
         </div>
       </div>
       <div class="col">
-        <div class="ntf-box"></div>
+        <div class="ntf-box">
+          <img src="https://gateway.pinata.cloud/ipfs/QmcCepE34kCkZNC1MtMTSFtwgXSP3mp9G6nKrq4a4hs6TM"/>
+        </div>
         <div class="ntf-content-detail">
           <div class="ntf-heading">
             <h2>RONIN</h2>
@@ -50,7 +73,7 @@
           <p>
               Total Supply: {{(nft4$|async)?.supply}}
             </p>
-            <button *ngIf="account&&account.length" (click)="mint('4','0.08')">MINT</button>
+            <button *ngIf="account&&account.length" (click)="mint('4','0.05')">MINT</button>
         </div>
       </div>
     </div>

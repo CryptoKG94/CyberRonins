@@ -26,9 +26,9 @@ export const reducer = createReducer(
 
 
 export const getTotalSupply =  (state: State) => state.totals;
+export const getNft0TotalSupply=(state:State) =>state.totals['0']
 export const getNft1TotalSupply=(state:State) =>state.totals['1']
 export const getNft2TotalSupply=(state:State) =>state.totals['2']
 export const getNft3TotalSupply=(state:State) =>state.totals['3']
 export const getNft4TotalSupply=(state:State) =>state.totals['4']
-export const getNft5TotalSupply=(state:State) =>state.totals['5']
 

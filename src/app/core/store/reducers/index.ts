@@ -128,10 +128,10 @@ import {
   export const getImages = createSelector(selectIpfsState, fromIpfs.getImages);
   export const getTotalSupply = createSelector(selectNftMintingState, fromNftMinting.getTotalSupply);
 
+  export const getNft0TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft0TotalSupply);
   export const getNft1TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft1TotalSupply);
   export const getNft2TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft2TotalSupply);
   export const getNft3TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft3TotalSupply);
   export const getNft4TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft4TotalSupply);
-  export const getNft5TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft5TotalSupply);
   
   
