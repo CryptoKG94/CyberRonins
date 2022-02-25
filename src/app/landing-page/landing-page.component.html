@@ -19,19 +19,19 @@
           <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a href="#section1" class="nav-link"> NFT </a>
+                <a href="#section3" class="nav-link"> NFT </a>
               </li>
               <li class="nav-item">
-                <a href="#section2" class="nav-link"> MARKETPLACE </a>
+                <a href="#section1" class="nav-link"> MARKETPLACE </a>
               </li>
               <li class="nav-item">
-                <a href="#section3" class="nav-link"> ROADMAP </a>
+                <a href="#section4" class="nav-link"> ROADMAP </a>
               </li>
               <li class="nav-item">
-                <a href="#section4" class="nav-link"> ABOUT </a>
+                <a href="#section5" class="nav-link"> ABOUT </a>
               </li>
               <li class="nav-item">
-                <a href="#section5" class="nav-link"> PATNERS </a>
+                <a href="#section6" class="nav-link"> PATNERS </a>
               </li>
               <li class="nav-item" *ngIf="{connected: ethereumConnected$ | async, injected: ethereumInjected$ | async} as ethereum">
                 <button class="btn wallet-connect" *ngIf="!ethereum.connected && ethereum.injected"  (click)="onConnect()"
@@ -45,35 +45,38 @@
       </nav>
       <div class="social-icon">
         <div class="nav flex-column">
-          <a class="nav-link active" aria-current="page" href="#"
+          <a class="nav-link active" aria-current="page" href="https://twitter.com/RoninsVIP"
             ><img src="../../assets/Images/Twitter.svg"
           /></a>
           <a class="nav-link" aria-current="page" href="#"
             ><img src="../../assets/Images/Telegram.svg"
           /></a>
-          <a class="nav-link" aria-current="page" href="#"
+          <a class="nav-link" aria-current="page" href="link.medium.com/wYXXZRMUqnb"
             ><img src="../../assets/Images/M-logo.svg"
           /></a>
         </div>
       </div>
     </div>
   </div>
-  <app-glitch-list></app-glitch-list>
   <div id="section1">
-    <app-joinus-section></app-joinus-section>
+    <app-glitch-list></app-glitch-list>
   </div>
   <div id="section2">
-    <app-ntf-listing></app-ntf-listing>
+    <app-joinus-section></app-joinus-section>
   </div>
   <div id="section3">
-    <app-dokkodo-section></app-dokkodo-section>
+    <app-ntf-listing></app-ntf-listing>
   </div>
   <div id="section4">
-    <app-aboutus-page></app-aboutus-page>
+    <app-dokkodo-section></app-dokkodo-section>
   </div>
   <div id="section5">
+    <app-aboutus-page></app-aboutus-page>
+  </div>
+  <div id="section6">
     <app-partners-page></app-partners-page>
   </div>
-  
-  <app-join-company-page></app-join-company-page>
+  <div id="section7">
+    <app-join-company-page></app-join-company-page>
+  </div>
 </div>
