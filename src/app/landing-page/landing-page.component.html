@@ -37,7 +37,7 @@
                 <button class="btn wallet-connect" *ngIf="!ethereum.connected && ethereum.injected"  (click)="onConnect()"
                 >Connect Wallet</button>
                 <button class="btn wallet-connect" *ngIf="ethereum.connected && ethereum.injected"  (click)="onDisconnect()"
-                >{{account$|async}}</button>
+                >{{account$|async | slice: 0: 4}}...{{account$|async | slice: -4}}</button>
               </li>
             </ul>
           </div>
