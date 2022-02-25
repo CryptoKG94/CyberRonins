@@ -25,6 +25,7 @@ import * as fromRootStore from './core/store';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot(fromRootStore.effects),
-    CarouselModule
+    CarouselModule,
+    ToastrModule.forRoot()
   ],
   entryComponents: [
   ],

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as fromRoot from '../core/store/reducers';
 import * as fromStore from '../core/store';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Observable } from 'rxjs';
+import { NotificationService } from '../Services/notification.service'
 
 @Component({
   selector: 'app-ntf-listing',
@@ -19,9 +19,9 @@ export class NtfListingComponent implements OnInit {
 
   account:string;
 
-  
+  title = 'toaster-not';
 
-  constructor(private store$: Store<fromRoot.AppState>,) {
+  constructor(private store$: Store<fromRoot.AppState>,private notifyService : NotificationService) {
     this.nft1$ = this.store$.pipe(select(fromRoot.getNft1TotalSupply));
     this.nft2$ = this.store$.pipe(select(fromRoot.getNft2TotalSupply));
     this.nft3$ = this.store$.pipe(select(fromRoot.getNft3TotalSupply));
@@ -29,9 +29,11 @@ export class NtfListingComponent implements OnInit {
     this.nft4$ = this.store$.pipe(select(fromRoot.getNft5TotalSupply));
 
     
-    
-   }
-
+  }
+  
+  showToasterError(){
+      this.notifyService.showError("Please connect wallet", "")
+  }
   ngOnInit(): void {
     this.store$.pipe(select(fromRoot.getEthereumInjected)).subscribe((connected)=>{
       if(connected){
@@ -50,30 +52,5 @@ export class NtfListingComponent implements OnInit {
   
   
   mint = (id:string,etherValue:string) => this.store$.dispatch(fromStore.NftMintingActions.mintToken({id,etherValue}));
-
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1 
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
-      }
-    },
-    nav: true
-  }
 
 }

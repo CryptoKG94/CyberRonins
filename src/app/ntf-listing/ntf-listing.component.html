@@ -12,6 +12,7 @@
               Total Supply: {{(nft1$|async)?.supply}}
             </p>
             <button *ngIf="account&&account.length" (click)="mint('1','0.05')">MINT</button>
+            <button *ngIf="account.length == 0" (click)="showToasterError()">MINT</button>
         </div>
       </div>
       <div class="col">
@@ -25,6 +26,7 @@
               Total Supply: {{(nft2$|async)?.supply}}
             </p>
             <button *ngIf="account&&account.length" (click)="mint('2','0.03')">MINT</button>
+            <button *ngIf="account.length == 0" (click)="showToasterError()">MINT</button>
         </div>
       </div>
       <div class="col">
@@ -38,6 +40,7 @@
               Total Supply: {{(nft3$|async)?.supply}}
             </p>
             <button *ngIf="account&&account.length" (click)="mint('3','0.04')">MINT</button>
+            <button *ngIf="account.length == 0" (click)="showToasterError()">MINT</button>
         </div>
       </div>
       <div class="col">
@@ -51,6 +54,7 @@
               Total Supply: {{(nft4$|async)?.supply}}
             </p>
             <button *ngIf="account&&account.length" (click)="mint('4','0.08')">MINT</button>
+            <button *ngIf="account.length == 0" (click)="showToasterError()">MINT</button>
         </div>
       </div>
     </div>
