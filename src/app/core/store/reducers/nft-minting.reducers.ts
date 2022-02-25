@@ -6,7 +6,7 @@ import { NftMintingActions } from '../actions';
 
 export interface State {
     totals:{
-        [id:string]: string;
+        [id:string]: {supply:string,max:string};
     }
 }
 
@@ -18,10 +18,12 @@ export const reducer = createReducer(
   initialState,
   on(NftMintingActions.getTokenSupplySuccess, (state, { id ,supply}) => ({
     ...state,
-    totals: {...state.totals,[id]:supply}
+    totals: {...state.totals,[id]:{...state.totals[id],supply}}
   })),
+ 
 
 );
+
 
 export const getTotalSupply =  (state: State) => state.totals;
 export const getNft1TotalSupply=(state:State) =>state.totals['1']

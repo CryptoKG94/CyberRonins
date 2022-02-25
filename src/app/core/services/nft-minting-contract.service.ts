@@ -12,10 +12,10 @@ export class NftMintingContractService {
   constructor(private contractToken: NftMintingContractToken) {
   }
 
-  public mint(id: number,etherValue:string): Observable<string> {
+  public mint(id: string,etherValue:string): Observable<string> {
 
     const wei = utils.parseEther(etherValue);
-
+    console.log(wei.toString(),etherValue,id)
     const token =
       this.contractToken['mint'](id, 1, {
         value: wei
@@ -47,9 +47,11 @@ export class NftMintingContractService {
   }
 
   public getTokenSupply(id:string): Observable<string> {
-    return from(this.contractToken['totalSupply'](id)).pipe(
+    return from(this.contractToken['totalSupply'](parseInt(id))).pipe(
       map(supply => supply as string)
     );
   }
+
+  
 
 }

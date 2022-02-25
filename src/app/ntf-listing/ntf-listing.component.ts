@@ -11,11 +11,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./ntf-listing.component.scss']
 })
 export class NtfListingComponent implements OnInit {
-  nft1$: Observable<string>;
-  nft2$: Observable<string>;
-  nft3$: Observable<string>;
-  nft4$: Observable<string>;
-  nft5$: Observable<string>;
+  nft1$: Observable<{supply:string,max:string}>;
+  nft2$: Observable<{supply:string,max:string}>;
+  nft3$: Observable<{supply:string,max:string}>;
+  nft4$: Observable<{supply:string,max:string}>;
+  nft5$: Observable<{supply:string,max:string}>;
+
+  account:string;
 
   
 
@@ -26,20 +28,28 @@ export class NtfListingComponent implements OnInit {
     this.nft4$ = this.store$.pipe(select(fromRoot.getNft4TotalSupply));
     this.nft4$ = this.store$.pipe(select(fromRoot.getNft5TotalSupply));
 
-    this.store$.pipe(select(fromRoot.getAccount)).subscribe((account)=>{
-      if(account&&(account.length>0)){
+    
+    
+   }
+
+  ngOnInit(): void {
+    this.store$.pipe(select(fromRoot.getEthereumInjected)).subscribe((connected)=>{
+      if(connected){
         this.store$.dispatch(fromStore.NftMintingActions.getTokenSupply({id:'1'}))
         this.store$.dispatch(fromStore.NftMintingActions.getTokenSupply({id:'2'}))
         this.store$.dispatch(fromStore.NftMintingActions.getTokenSupply({id:'3'}))
         this.store$.dispatch(fromStore.NftMintingActions.getTokenSupply({id:'4'}))
         this.store$.dispatch(fromStore.NftMintingActions.getTokenSupply({id:'5'}))
+      
       }
     });
-    
-   }
-
-  ngOnInit(): void {
+    this.store$.pipe(select(fromRoot.getAccount)).subscribe((account)=>{
+      this.account=account
+    })
   }
+  
+  
+  mint = (id:string,etherValue:string) => this.store$.dispatch(fromStore.NftMintingActions.mintToken({id,etherValue}));
 
   customOptions: OwlOptions = {
     loop: true,

@@ -33,7 +33,7 @@ contract NftContract is ERC1155Supply,Ownable {
   }
 
   function mint(uint256 id,uint256 numberOfTokens) public payable {
-        require(!mintPaused[id], "Token Minting is currently paused");
+        require(mintPaused[id]==false, "Token Minting is currently paused");
         require(mintingEndedForever[id] == false, "Token Sale ended");
         require(numberOfTokens != 0, "You need to mint at least 1 token");
         require(numberOfTokens <= maxMints[id], "Number of tokens minted exceeds maximum allowable");
@@ -41,7 +41,6 @@ contract NftContract is ERC1155Supply,Ownable {
         require(mintPrices[id].mul(numberOfTokens) <= msg.value, "Not enough Ether sent.");
 
         _mint(msg.sender, id,numberOfTokens,"");
-        payable(address(this)).transfer(msg.value);
     }
 
     function endSaleForever(uint256 id) external onlyOwner {

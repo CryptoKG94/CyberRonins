@@ -1,10 +1,10 @@
 
 import { createAction, props} from '@ngrx/store';
 
-export const mintToken = createAction('[NFTMinting/API] Mint Token', props<{ payload: {id:string,account:string} }>());
+export const mintToken = createAction('[NFTMinting/API] Mint Token', props<{ id:string,etherValue:string}>());
 
 export const mintTokenSuccess =
-createAction('[NFTMinting/Command] Mint Token Success');
+createAction('[NFTMinting/Command] Mint Token Success', props<{ id: string }>());
 
 export const getTokenSupply = createAction('[NFTMinting/API] Get Token Supply', props<{ id: string }>());
 export const getTokenSupplySuccess =

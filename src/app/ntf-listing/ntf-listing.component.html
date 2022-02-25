@@ -10,9 +10,9 @@
               <h2>NTF</h2>
             </div>
             <p>
-              Total Supply: {{nft1$|async}}
+              Total Supply: {{(nft1$|async)?.supply}}
             </p>
-            <button>MINT</button>
+            <button *ngIf="account&&account.length" (click)="mint('1','0.05')">MINT</button>
           </div>
         </div>
       </ng-template>  
@@ -25,9 +25,9 @@
               <h2>NTF</h2>
             </div>
             <p>
-              Total Supply: {{nft2$|async}}
+              Total Supply: {{(nft2$|async)?.supply}}
             </p>
-            <button>MINT</button>
+            <button *ngIf="account&&account.length" (click)="mint('2','0.03')">MINT</button>
           </div>
         </div>
       </ng-template>  
@@ -40,9 +40,9 @@
               <h2>NTF</h2>
             </div>
             <p>
-              Total Supply: {{nft3$|async}}
+              Total Supply: {{(nft3$|async)?.supply}}
             </p>
-            <button>MINT</button>
+            <button *ngIf="account&&account.length" (click)="mint('3','0.04')">MINT</button>
           </div>
         </div>
       </ng-template>  
@@ -55,9 +55,9 @@
               <h2>NTF</h2>
             </div>
             <p>
-              Total Supply: {{nft4$|async}}
+              Total Supply: {{(nft4$|async)?.supply}}
             </p>
-            <button>MINT</button>
+            <button *ngIf="account&&account.length" (click)="mint('4','0.08')">MINT</button>
           </div>
         </div>
       </ng-template> 
@@ -70,9 +70,9 @@
               <h2>NTF</h2>
             </div>
             <p>
-              Total Supply: {{nft5$|async}}
+              Total Supply: {{(nft5$|async)?.supply}}
             </p>
-            <button>MINT</button>
+            <button *ngIf="account&&account.length" (click)="mint('5','0.01')">MINT</button>
           </div>
         </div>
       </ng-template> 
