@@ -133,5 +133,6 @@ import {
   export const getNft2TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft2TotalSupply);
   export const getNft3TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft3TotalSupply);
   export const getNft4TotalSupply = createSelector(selectNftMintingState, fromNftMinting.getNft4TotalSupply);
+  export const getTokenPrice = createSelector(selectNftMintingState, fromNftMinting.getTokenPrice);
   
   

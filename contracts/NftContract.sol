@@ -9,51 +9,80 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 contract NftContract is ERC1155Supply,Ownable {
   using SafeMath for uint;
-
-  mapping(uint256 => uint256) private mintPrices;
-  mapping(uint256 => uint256) private maxMints;
-  mapping(uint256 => uint256) public MAX_TOKENS;
   
-  mapping(uint256 => bool) private mintPaused;
-  mapping(uint256 => bool) private mintingEndedForever;
-  uint256 privateSalePrice=0.01 ether;
+  bool private mintPaused;
+
+  mapping(address=>bool) private privateSaleUserWhitelist;
+  mapping(address=>uint256) private privateSaleUserMints;
+  uint256 public privateSalePrice;
+  uint256 public publicSalePrice;
+  uint256 public deployTime;
+  uint256 public maxTokensPerMintPublicSale;
+  uint256 public maxTokensPerMintPrivateSale;
+  uint256 public maxTokensPerUserPrivateSale;
+
+
   constructor() ERC1155("https://gateway.pinata.cloud/ipfs/QmREgzdidGN5JXyV3zPb7DoXhp5t4DDh7ooiMbWifSsnmh/{id}.json") {
-        MAX_TOKENS[0] = 6;
-        MAX_TOKENS[1] = 6;
-        MAX_TOKENS[2] = 6;
-        MAX_TOKENS[3] = 6;
-        MAX_TOKENS[4] = 6;
-
-        maxMints[0] = 1;
-        maxMints[1] = 1;
-        maxMints[2] = 1;
-        maxMints[3] = 1;
-        maxMints[4] = 1;
-
-        mintPrices[0] = 0.01 ether;
-        mintPrices[1] = 0.02 ether;
-        mintPrices[2] = 0.03 ether;
-        mintPrices[3] = 0.04 ether;
-        mintPrices[4] = 0.05 ether;
+        privateSalePrice=0.1 ether;
+        publicSalePrice=0 ether;
+        deployTime=block.timestamp;
+        maxTokensPerMintPublicSale=1;
+        maxTokensPerMintPrivateSale=1;
+        maxTokensPerUserPrivateSale=1;
   }
 
+  function setMaxTokensPerUserPrivateSale(uint256 _maxTokensPerUserPrivateSale) external onlyOwner{
+      maxTokensPerUserPrivateSale=_maxTokensPerUserPrivateSale;
+  }
+  function setMaxTokensPerMintPublicSale(uint256 _maxTokensPerMintPublicSale) external onlyOwner{
+      maxTokensPerMintPublicSale=_maxTokensPerMintPublicSale;
+  }
+  function setMaxTokensPerMintPrivateSale(uint256 _maxTokensPerMintPrivateSale) external onlyOwner{
+      maxTokensPerMintPrivateSale=_maxTokensPerMintPrivateSale;
+  }
+  function setPrivateSalePrice(uint256 _privateSalePrice) external onlyOwner{
+      privateSalePrice=_privateSalePrice;
+  }
+  function setPublicSalePrice(uint256 _publicSalePrice) external onlyOwner{
+      publicSalePrice=_publicSalePrice;
+  }
+
+  function getTokenPrice() public view returns(uint256){
+      if(deployTime.add(1 days)>=block.timestamp){
+        return privateSalePrice;
+      }else{
+        return publicSalePrice;
+      }
+  }
+
+
   function mint(uint256 id,uint256 numberOfTokens) public payable {
-        require(mintPaused[id]==false, "Token Minting is currently paused");
-        require(mintingEndedForever[id] == false, "Token Sale ended");
+        require(mintPaused==false, "Token Minting is currently paused");
         require(numberOfTokens != 0, "You need to mint at least 1 token");
-        require(numberOfTokens <= maxMints[id], "Number of tokens minted exceeds maximum allowable");
-        require(totalSupply(id).add(numberOfTokens) <= MAX_TOKENS[id], "Minting would exceed max. supply");
-        require(mintPrices[id].mul(numberOfTokens) <= msg.value, "Not enough Ether sent.");
+        uint256 salePrice;
+        //Private Sale
+        if(deployTime.add(1 days)>=block.timestamp){
+            salePrice=privateSalePrice;
+            require(privateSaleUserWhitelist[msg.sender],"The address isn't authorized");
+            require(privateSaleUserMints[msg.sender].add(numberOfTokens)<=maxTokensPerUserPrivateSale,"Number of tokens minted exceed maximum set for private sale");
+            require(numberOfTokens<=maxTokensPerMintPrivateSale,"Number of tokens minted exceed maximum set for private sale per mint");
+            privateSaleUserMints[msg.sender]++;
+        }else{
+            salePrice=publicSalePrice;
+            require(numberOfTokens<=maxTokensPerMintPublicSale,"Number of tokens minted exceed maximum set for public sale per mint");
+        }
+        require(salePrice.mul(numberOfTokens) <= msg.value, "Not enough Ether sent.");
 
         _mint(msg.sender, id,numberOfTokens,"");
     }
 
-    function endSaleForever(uint256 id) external onlyOwner {
-        mintingEndedForever[id] = true;
+
+    function addPrivateSaleBuyer(address user)external onlyOwner{
+        privateSaleUserWhitelist[user]=true;
     }
 
-    function togglePauseMinting(uint256 id) external onlyOwner {
-        mintPaused[id] = !mintPaused[id];
+    function togglePauseMinting() external onlyOwner {
+        mintPaused = !mintPaused;
     }
 
     function withdraw() external onlyOwner {

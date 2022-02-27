@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import * as fromRoot from '../core/store/reducers';
 import * as fromStore from '../core/store';
 import { Observable } from 'rxjs';
-import { NotificationService } from '../Services/notification.service'
+import { NotificationService } from '../core/services/notification.service'
 
 @Component({
   selector: 'app-ntf-listing',
@@ -16,8 +16,10 @@ export class NtfListingComponent implements OnInit {
   nft2$: Observable<{supply:string,max:string}>;
   nft3$: Observable<{supply:string,max:string}>;
   nft4$: Observable<{supply:string,max:string}>;
+  tokenPrice$:Observable<string>;
 
   account:string;
+  tokenPrice:string;
 
   title = 'toaster-not';
 
@@ -27,6 +29,7 @@ export class NtfListingComponent implements OnInit {
     this.nft2$ = this.store$.pipe(select(fromRoot.getNft2TotalSupply));
     this.nft3$ = this.store$.pipe(select(fromRoot.getNft3TotalSupply));
     this.nft4$ = this.store$.pipe(select(fromRoot.getNft4TotalSupply));
+    this.tokenPrice$ = this.store$.pipe(select(fromRoot.getTokenPrice));
 
     
   }
@@ -42,18 +45,28 @@ export class NtfListingComponent implements OnInit {
         this.store$.dispatch(fromStore.NftMintingActions.getTokenSupply({id:'2'}))
         this.store$.dispatch(fromStore.NftMintingActions.getTokenSupply({id:'3'}))
         this.store$.dispatch(fromStore.NftMintingActions.getTokenSupply({id:'4'}))
+        this.store$.dispatch(fromStore.NftMintingActions.getTokenPrice())
       
       }
     });
     this.store$.pipe(select(fromRoot.getAccount)).subscribe((account)=>{
       this.account=account
     })
+    this.tokenPrice$.subscribe((tokenPrice)=>{
+      this.tokenPrice=tokenPrice;
+    })
   }
   
   
-  mint = (id:string,etherValue:string) => {
+  mint = (id:string) => {
     if(this.account&&this.account.length){
-      this.store$.dispatch(fromStore.NftMintingActions.mintToken({id,etherValue}))
+      if(this.tokenPrice&&this.tokenPrice.length){
+        let etherValue=this.tokenPrice;
+        this.store$.dispatch(fromStore.NftMintingActions.mintToken({id,etherValue}))
+      }else{
+        this.notifyService.showError("Please wait for token price to be loaded", "")
+      }
+      
     }else{
       this.showToasterError()
     }

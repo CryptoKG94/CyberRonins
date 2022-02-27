@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { serializeError } from 'serialize-error';
+import { serializeError } from 'eth-rpc-errors'
 import {
   map, mapTo, tap, filter, withLatestFrom,
   switchMap, exhaustMap, catchError, concatMap, concatMapTo
@@ -16,6 +16,7 @@ import * as fromStore from '../reducers';
 import { Store, select } from '@ngrx/store';
 import { ErrorActions, Web3GatewayActions,NftMintingActions } from '../actions';
 import { ethers } from 'ethers';
+import { NotificationService } from '../../services/notification.service';
 
 
 
@@ -26,6 +27,7 @@ export class NftMintingEffects {
     private nftMintingContractService: NftMintingContractService,
     private actions$: Actions,
     private router: Router,
+    private notifyService : NotificationService
   ) { }
 
   getTokenSupply$ = createEffect(
@@ -45,6 +47,25 @@ export class NftMintingEffects {
       })
 
     ));
+
+    getTokenPrice$ = createEffect(
+      () => this.actions$.pipe(
+        ofType(NftMintingActions.getTokenPrice),
+        concatMap(() => {
+  
+          return this.nftMintingContractService.getTokenPrice().pipe(
+            tap(()=>console.log("Token Price")),
+            tap(console.log),
+            map((priceBig:ethers.BigNumber) =>{
+              
+              let price=ethers.utils.formatEther(priceBig)+'';
+              return NftMintingActions.getTokenPriceSuccess({ price })})
+              ,
+            catchError((err: Error) => of(this.handleError(err)))
+          );
+        })
+  
+      ));
 
     mintToken$ = createEffect(
       () => this.actions$.pipe(
@@ -74,8 +95,14 @@ export class NftMintingEffects {
 
 
   private handleError(error: Error) {
-    console.log(error)
-    const friendlyErrorMessage = serializeError(error).message as string;
+    let friendlyErrorMessage = serializeError(error).message as string;
+    if(error.message&&(error.message.indexOf("execution reverted:")>-1)){
+      let start=error.message.indexOf("execution reverted:")+"execution reverted:".length;
+      let end=error.message.indexOf('","data"');
+      friendlyErrorMessage=error.message.substring(start,end);
+    }
+    this.notifyService.showError(friendlyErrorMessage, "")
+    
     console.log(friendlyErrorMessage)
     return ErrorActions.errorMessage({ errorMsg: friendlyErrorMessage });
   }
