@@ -46,9 +46,18 @@ export class NtfListingComponent implements OnInit {
     this.tokenPrice={}
     
     this.store$.pipe(select(fromRoot.getNetwork)).subscribe((network:string)=>{
-      if((network.length)&&(network!='rinkeby')){
-        this.notifyService.showError("Please connect to the rinkeby network", "")
+      if(network.length){
+        
+        if((network!='rinkeby')){
+          this.notifyService.showError("Please connect to the rinkeby network", "")
+          this.notifyService.showError("You have connected to the "+network+" network", "")
+        }else{
+          this.notifyService.showNotification("You have connected to the "+network+" network", "")
+        }
       }
+      
+      
+      
     })
     this.store$.pipe(select(fromRoot.getEthereumInjected)).subscribe((connected)=>{
       if(connected){

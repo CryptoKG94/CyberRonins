@@ -121,6 +121,7 @@ export class Web3GatewayEffects {
       )
     )
   );
+  
 
   getNetwork$ = createEffect(() =>
     this.actions$.pipe(
@@ -139,6 +140,8 @@ export class Web3GatewayEffects {
       )
     )
   );
+
+  
 
 
   accountWatcher$ = !!this.ethProvider ? fromEvent(this.ethProvider, 'accountsChanged').pipe(
