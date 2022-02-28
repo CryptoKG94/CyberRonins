@@ -64,7 +64,8 @@ export class Web3GatewayEffects {
     this.actions$.pipe(
       ofType(Web3GatewayActions.ethereumDisconnect),
       map(() => {
-        return ErrorActions.errorMessage({ errorMsg: `This feature is in a suggested proposal yet.` });
+
+        return Web3GatewayActions.ethereumDisconnectSuccess();
 
       })
     )

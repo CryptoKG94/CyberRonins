@@ -27,6 +27,12 @@ export const reducer = createReducer(
     ...state,
     ethereumConnected: true
   })),
+  on(Web3GatewayActions.ethereumDisconnectSuccess, state => ({
+    ...state,
+    ethereumConnected: false,
+    account:'',
+    balance:''
+  })),
   on(Web3GatewayActions.networkSuccess, (state, { network }) => ({
     ...state,
     ethereumNetwork: network
