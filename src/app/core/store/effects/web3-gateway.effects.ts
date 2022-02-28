@@ -13,6 +13,7 @@ import { EthereumProviderToken } from '../../services/tokens';
 import { EthersWeb3ProviderService } from '../../services/ethers-web3-provider.service';
 import { Web3GatewayActions, ErrorActions } from '../actions';
 import { utils } from 'ethers';
+import { NotificationService } from '../../services/notification.service';
 
 @Injectable()
 export class Web3GatewayEffects {
@@ -22,7 +23,8 @@ export class Web3GatewayEffects {
     private store$: Store<fromStore.AppState>,
     private router: Router,
     private web3ProviderSrv: EthersWeb3ProviderService,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private notifyService : NotificationService
   ) { }
 
   ethereumInject$ = createEffect(() =>
@@ -124,6 +126,10 @@ export class Web3GatewayEffects {
       ofType(Web3GatewayActions.getNetwork),
       switchMap(() =>
         this.web3ProviderSrv.getNetwork().pipe(
+          tap((network)=>{
+            console.log(network)
+            
+          }),
           map((network: string) =>
             Web3GatewayActions.networkSuccess({ network })
           ),

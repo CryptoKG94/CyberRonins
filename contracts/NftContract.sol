@@ -15,7 +15,7 @@ contract NftContract is ERC1155Supply,Ownable {
   mapping(address=>bool) private privateSaleUserWhitelist;
   mapping(address=>uint256) private privateSaleUserMints;
   uint256 public privateSalePrice;
-  uint256 public publicSalePrice;
+  mapping(uint256=>uint256) public publicSalePrice;
   uint256 public deployTime;
   uint256 public maxTokensPerMintPublicSale;
   uint256 public maxTokensPerMintPrivateSale;
@@ -24,7 +24,10 @@ contract NftContract is ERC1155Supply,Ownable {
 
   constructor() ERC1155("https://gateway.pinata.cloud/ipfs/QmREgzdidGN5JXyV3zPb7DoXhp5t4DDh7ooiMbWifSsnmh/{id}.json") {
         privateSalePrice=0.1 ether;
-        publicSalePrice=0 ether;
+        publicSalePrice[0]=0 ether;
+        publicSalePrice[1]=0 ether;
+        publicSalePrice[2]=0 ether;
+        publicSalePrice[3]=0 ether;
         deployTime=block.timestamp;
         maxTokensPerMintPublicSale=1;
         maxTokensPerMintPrivateSale=1;
@@ -43,15 +46,15 @@ contract NftContract is ERC1155Supply,Ownable {
   function setPrivateSalePrice(uint256 _privateSalePrice) external onlyOwner{
       privateSalePrice=_privateSalePrice;
   }
-  function setPublicSalePrice(uint256 _publicSalePrice) external onlyOwner{
-      publicSalePrice=_publicSalePrice;
+  function setPublicSalePrice(uint256 id,uint256 _publicSalePrice) external onlyOwner{
+      publicSalePrice[id]=_publicSalePrice;
   }
 
-  function getTokenPrice() public view returns(uint256){
+  function getTokenPrice(uint256 id) public view returns(uint256){
       if(deployTime.add(1 days)>=block.timestamp){
         return privateSalePrice;
       }else{
-        return publicSalePrice;
+        return publicSalePrice[id];
       }
   }
 
@@ -68,7 +71,7 @@ contract NftContract is ERC1155Supply,Ownable {
             require(numberOfTokens<=maxTokensPerMintPrivateSale,"Number of tokens minted exceed maximum set for private sale per mint");
             privateSaleUserMints[msg.sender]++;
         }else{
-            salePrice=publicSalePrice;
+            salePrice=publicSalePrice[id];
             require(numberOfTokens<=maxTokensPerMintPublicSale,"Number of tokens minted exceed maximum set for public sale per mint");
         }
         require(salePrice.mul(numberOfTokens) <= msg.value, "Not enough Ether sent.");

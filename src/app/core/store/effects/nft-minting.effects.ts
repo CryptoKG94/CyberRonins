@@ -51,15 +51,16 @@ export class NftMintingEffects {
     getTokenPrice$ = createEffect(
       () => this.actions$.pipe(
         ofType(NftMintingActions.getTokenPrice),
-        concatMap(() => {
+
+        concatMap(({id}) => {
   
-          return this.nftMintingContractService.getTokenPrice().pipe(
+          return this.nftMintingContractService.getTokenPrice(id).pipe(
             tap(()=>console.log("Token Price")),
             tap(console.log),
             map((priceBig:ethers.BigNumber) =>{
               
               let price=ethers.utils.formatEther(priceBig)+'';
-              return NftMintingActions.getTokenPriceSuccess({ price })})
+              return NftMintingActions.getTokenPriceSuccess({ id,price })})
               ,
             catchError((err: Error) => of(this.handleError(err)))
           );
@@ -100,8 +101,9 @@ export class NftMintingEffects {
       let start=error.message.indexOf("execution reverted:")+"execution reverted:".length;
       let end=error.message.indexOf('","data"');
       friendlyErrorMessage=error.message.substring(start,end);
+      this.notifyService.showError(friendlyErrorMessage, "")
     }
-    this.notifyService.showError(friendlyErrorMessage, "")
+    
     
     console.log(friendlyErrorMessage)
     return ErrorActions.errorMessage({ errorMsg: friendlyErrorMessage });

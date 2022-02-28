@@ -10,6 +10,6 @@ export const getTokenSupply = createAction('[NFTMinting/API] Get Token Supply', 
 export const getTokenSupplySuccess =
 createAction('[NFTMinting/Command] Get Token Supply Success', props<{ id:string,supply: string }>());
 
-export const getTokenPrice = createAction('[NFTMinting/API] Get Token Price');
+export const getTokenPrice = createAction('[NFTMinting/API] Get Token Price', props<{ id: string }>());
 export const getTokenPriceSuccess =
-createAction('[NFTMinting/Command] Get Token Price Success', props<{ price: string }>());
+createAction('[NFTMinting/Command] Get Token Price Success', props<{ price: string,id:string }>());

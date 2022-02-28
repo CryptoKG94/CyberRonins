@@ -52,8 +52,8 @@ export class NftMintingContractService {
     );
   }
 
-  public getTokenPrice(): Observable<string> {
-    return from(this.contractToken['getTokenPrice']()).pipe(
+  public getTokenPrice(id:string): Observable<string> {
+    return from(this.contractToken['getTokenPrice'](parseInt(id))).pipe(
       map(price => price as string)
     );
   }

@@ -8,12 +8,12 @@ export interface State {
     totals:{
         [id:string]: {supply:string,max:string};
     },
-    tokenPrice:string
+    tokenPrices:{[id:string]:string}
 }
 
 const initialState: State = {
     totals:{},
-    tokenPrice:''
+    tokenPrices:{}
 };
 
 export const reducer = createReducer(
@@ -22,9 +22,9 @@ export const reducer = createReducer(
     ...state,
     totals: {...state.totals,[id]:{...state.totals[id],supply}}
   })),
-  on(NftMintingActions.getTokenPriceSuccess, (state, { price}) => ({
+  on(NftMintingActions.getTokenPriceSuccess, (state, { id,price}) => ({
     ...state,
-    tokenPrice: price
+    tokenPrices: {...state.tokenPrices,[id]:price}
   })),
  
 
@@ -38,6 +38,7 @@ export const getNft0TotalSupply=(state:State) =>state.totals['0']
 export const getNft1TotalSupply=(state:State) =>state.totals['1']
 export const getNft2TotalSupply=(state:State) =>state.totals['2']
 export const getNft3TotalSupply=(state:State) =>state.totals['3']
-export const getNft4TotalSupply=(state:State) =>state.totals['4']
-export const getTokenPrice=(state:State) =>state.tokenPrice
-
+export const getTokenPrice0=(state:State) =>state.tokenPrices['0']
+export const getTokenPrice1=(state:State) =>state.tokenPrices['1']
+export const getTokenPrice2=(state:State) =>state.tokenPrices['2']
+export const getTokenPrice3=(state:State) =>state.tokenPrices['3']
