@@ -5,12 +5,14 @@ import { Observable, from } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { EthereumProviderToken } from '../services/tokens';
+import { LocalStorageProviderToken } from './tokens/local-storage-token';
 
 @Injectable({ providedIn: 'root' })
 export class EthersWeb3ProviderService {
 
   constructor(
     @Inject(EthereumProviderToken) private ethProvider:any,
+    @Inject(LocalStorageProviderToken) private localStorageProvider:any,
     @Inject(DOCUMENT) private document: Document,
   ) {
     

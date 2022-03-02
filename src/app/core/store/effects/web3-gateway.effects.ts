@@ -14,6 +14,7 @@ import { EthersWeb3ProviderService } from '../../services/ethers-web3-provider.s
 import { Web3GatewayActions, ErrorActions } from '../actions';
 import { utils } from 'ethers';
 import { NotificationService } from '../../services/notification.service';
+import { LocalStorageProviderToken } from '../../services/tokens/local-storage-token';
 
 @Injectable()
 export class Web3GatewayEffects {
@@ -24,6 +25,7 @@ export class Web3GatewayEffects {
     private router: Router,
     private web3ProviderSrv: EthersWeb3ProviderService,
     @Inject(DOCUMENT) private document: Document,
+    @Inject(LocalStorageProviderToken) private localStorageProvider:any,
     private notifyService : NotificationService
   ) { }
 
@@ -35,6 +37,21 @@ export class Web3GatewayEffects {
           return ErrorActions.errorMessage({ errorMsg: `Please install MetaMask.` });
         }
         return Web3GatewayActions.ethereumInjectSuccess();
+      })
+    )
+  );
+  ethereumInjectSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(Web3GatewayActions.ethereumInjectSuccess),
+      map(() => {
+        let account=this.localStorageProvider.getItem('account')
+        console.log('account',account)
+        if(account&&account.length){
+          return Web3GatewayActions.ethereumConnect();
+        }else{
+          return Web3GatewayActions.ethereumDisconnect();
+        }
+        
       })
     )
   );
@@ -51,6 +68,7 @@ export class Web3GatewayEffects {
               return ErrorActions.errorMessage({ errorMsg: `Can't get any user accounts` });
             }
             console.log(`Ethereum provider has been granted access to the following account:`, ethAccounts[0]);
+            this.localStorageProvider.setItem("account",ethAccounts[0])
             return Web3GatewayActions.ethereumConnectSuccess();
           }),
           catchError((err: Error) => of(this.handleError(err)) )
@@ -64,7 +82,7 @@ export class Web3GatewayEffects {
     this.actions$.pipe(
       ofType(Web3GatewayActions.ethereumDisconnect),
       map(() => {
-
+        this.localStorageProvider.setItem("account","")
         return Web3GatewayActions.ethereumDisconnectSuccess();
 
       })
