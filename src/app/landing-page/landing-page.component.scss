@@ -34,6 +34,25 @@
     .navbar-nav{
         align-items: center;
     }
+    .nav-dropdown {
+        min-width: 1.5rem;
+        margin-left: 1.1rem;
+        background: transparent;
+        color: white;
+        border: 1px solid;
+        border-radius: 0.25rem;
+    }
+
+    .nav-dropdown-item {
+        color: white;
+        padding: 0.15rem 0.5rem;
+    }
+
+    .nav-dropdown-item:hover {
+        color: #1de0e7 !important;
+        background-color: transparent;
+    }
+
     .wallet-connect{
         text-transform: uppercase;
         border: 1px solid #fff;
