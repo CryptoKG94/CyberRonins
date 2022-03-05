@@ -26,9 +26,9 @@
                   </a>
                 
                   <div class="dropdown-menu nav-dropdown" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item nav-dropdown-item" href="#">ETH</a>
-                    <a class="dropdown-item nav-dropdown-item" href="#">BSC</a>
-                    <a class="dropdown-item nav-dropdown-item" href="#">POL</a>
+                    <div *ngFor="let menu of nftlist">
+                      <a class="dropdown-item nav-dropdown-item" href={{menu.link}}>{{menu.name}}</a>
+                    </div>
                   </div>
                 </div>
               </li>

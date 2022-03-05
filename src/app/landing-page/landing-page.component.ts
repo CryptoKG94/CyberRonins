@@ -9,7 +9,12 @@ import * as fromRoot from '../core/store';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-
+  
+  public nftlist: any[] = [
+    { name: "ETH", link: "#" },
+    { name: "BSC", link: "#" },
+    { name: "POL", link: "#" }
+  ];
   ethereumInjected$: Observable<boolean>;
   ethereumConnected$: Observable<boolean>;
   account$: Observable<string>;

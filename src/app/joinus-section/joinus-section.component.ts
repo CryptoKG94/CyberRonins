@@ -13,7 +13,7 @@ export class JoinusSectionComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription;
   
   public dateNow = new Date();
-  public dDay = new Date('Mar 01 2022 00:00:00');
+  public dDay = new Date('Jun 01 2022 00:00:00');
   milliSecondsInASecond = 1000;
   hoursInADay = 24;
   minutesInAnHour = 60;
