@@ -45,7 +45,6 @@ export class Web3GatewayEffects {
       ofType(Web3GatewayActions.ethereumInjectSuccess),
       map(() => {
         let account=this.localStorageProvider.getItem('account')
-        console.log('account',account)
         if(account&&account.length){
           return Web3GatewayActions.ethereumConnect();
         }else{
@@ -83,6 +82,7 @@ export class Web3GatewayEffects {
       ofType(Web3GatewayActions.ethereumDisconnect),
       map(() => {
         this.localStorageProvider.setItem("account","")
+        this.localStorageProvider.setItem("disconnected","true")
         return Web3GatewayActions.ethereumDisconnectSuccess();
 
       })

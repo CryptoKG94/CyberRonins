@@ -20,6 +20,7 @@ export class NtfListingComponent implements OnInit {
   tokenPrice2$:Observable<string>;
   tokenPrice3$:Observable<string>;
 
+  account$:Observable<string>;
   account:string;
   tokenPrice:any;
 
@@ -53,6 +54,8 @@ export class NtfListingComponent implements OnInit {
           this.notifyService.showError("You have connected to the "+network+" network", "")
         }else{
           this.notifyService.showNotification("You have connected to the "+network+" network", "")
+          this.store$.dispatch(fromStore.Web3GatewayActions.ethereumConnect())
+          this.store$.dispatch(fromStore.Web3GatewayActions.getAccount())
         }
       }
       
@@ -73,8 +76,10 @@ export class NtfListingComponent implements OnInit {
       
       }
     });
-    this.store$.pipe(select(fromRoot.getAccount)).subscribe((account)=>{
+    this.account$=this.store$.pipe(select(fromRoot.getAccount));
+    this.account$.subscribe((account)=>{
       this.account=account
+      
     })
     this.tokenPrice0$.subscribe((tokenPrice0)=>{
       this.tokenPrice['0']=tokenPrice0;
