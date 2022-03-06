@@ -54,7 +54,7 @@ export class NtfListingComponent implements OnInit {
           this.notifyService.showError("You have connected to the "+network+" network", "")
         }else{
           this.notifyService.showNotification("You have connected to the "+network+" network", "")
-          this.store$.dispatch(fromStore.Web3GatewayActions.ethereumConnect())
+          this.store$.dispatch(fromStore.Web3GatewayActions.ethereumConnect({system:true}))
           this.store$.dispatch(fromStore.Web3GatewayActions.getAccount())
         }
       }

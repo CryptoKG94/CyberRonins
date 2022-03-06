@@ -26,7 +26,7 @@ export class LandingPageComponent implements OnInit {
     this.ethereumConnected$ = this.store$.pipe(select(fromRoot.getEthereumConnected));
     this.account$ = this.store$.pipe(select(fromRoot.getAccount));
   }
-  onConnect = () => this.store$.dispatch(fromRoot.Web3GatewayActions.ethereumConnect());
+  onConnect = () => this.store$.dispatch(fromRoot.Web3GatewayActions.ethereumConnect({}));
   onDisconnect = () => this.store$.dispatch(fromRoot.Web3GatewayActions.ethereumDisconnect());
 
 }

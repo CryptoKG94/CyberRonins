@@ -46,7 +46,7 @@ export class Web3GatewayEffects {
       map(() => {
         let account=this.localStorageProvider.getItem('account')
         if(account&&account.length){
-          return Web3GatewayActions.ethereumConnect();
+          return Web3GatewayActions.ethereumConnect({system:true});
         }else{
           return Web3GatewayActions.ethereumDisconnect();
         }
@@ -59,19 +59,33 @@ export class Web3GatewayEffects {
   ethereumConnect$ = createEffect(() =>
     this.actions$.pipe(
       ofType(Web3GatewayActions.ethereumConnect),
-      exhaustMap(() => {
-
-        return from<any[]>(this.ethProvider.send('eth_requestAccounts')).pipe(
+      map(props=>props.system),
+      exhaustMap((system) => {
+        let returnObs=from<any[]>(this.ethProvider.send('eth_requestAccounts')).pipe(
           map((ethAccounts) => {
             if (ethAccounts.length === 0) {
               return ErrorActions.errorMessage({ errorMsg: `Can't get any user accounts` });
             }
             console.log(`Ethereum provider has been granted access to the following account:`, ethAccounts[0]);
             this.localStorageProvider.setItem("account",ethAccounts[0])
+            this.localStorageProvider.setItem("disconnected","false")
             return Web3GatewayActions.ethereumConnectSuccess();
           }),
           catchError((err: Error) => of(this.handleError(err)) )
         );
+          
+        if(!system){
+          return returnObs;
+        }else{
+          let status=this.localStorageProvider.getItem("disconnected")
+          if(status=="true"){
+            return of()
+          }else{
+            return returnObs;
+          }
+           
+        }
+        
 
       })
     )

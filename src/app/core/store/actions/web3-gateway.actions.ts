@@ -4,7 +4,7 @@ import { createAction, props } from '@ngrx/store';
 export const ethereumInject = createAction('[Web3/Gateway] Ethereum Inject');
 export const ethereumInjectSuccess = createAction('[Web3/Gateway] Ethereum Inject Success');
 
-export const ethereumConnect = createAction('[Web3/Gateway] Ethereum Connect');
+export const ethereumConnect = createAction('[Web3/Gateway] Ethereum Connect',props<{system?:boolean}>());
 export const ethereumConnectSuccess = createAction('[Web3/Gateway] Ethereum Connect Success');
 
 export const ethereumDisconnect = createAction('[Web3/Gateway] Ethereum Disconnect');
